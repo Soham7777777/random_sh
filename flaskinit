@@ -1,0 +1,33 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: flaskinit <project_name>"
+    exit 1
+fi
+
+PROJECT_NAME=$1
+REPO_URL="https://github.com/Soham7777777/backend.git"
+
+# Create a project directory
+mkdir "$PROJECT_NAME" || { echo "Failed to create directory"; exit 1; }
+cd "$PROJECT_NAME" || { echo "Failed to enter directory"; exit 1; }
+
+# Clone the repository
+git clone "$REPO_URL" . || { echo "Failed to clone repository"; exit 1; }
+
+# Remove the .git folder
+rm -rf .git
+
+# Create a virtual environment
+python3 -m venv .env || { echo "Failed to create virtual environment"; exit 1; }
+
+# Activate the virtual environment and install requirements
+source .env/bin/activate
+pip install -r requirements.txt || { echo "Failed to install requirements"; exit 1; }
+
+# Initialize a new git repository
+git init
+git add -A
+git commit -a -m "Project Initialized."
+
+echo "Flask project '$PROJECT_NAME' initialized successfully."
