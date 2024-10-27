@@ -19,10 +19,10 @@ git clone "$REPO_URL" . || { echo "Failed to clone repository"; exit 1; }
 rm -rf .git
 
 # Create a virtual environment
-python3 -m venv .env || { echo "Failed to create virtual environment"; exit 1; }
+python3 -m venv .venv || { echo "Failed to create virtual environment"; exit 1; }
 
 # Activate the virtual environment and install requirements
-source .env/bin/activate
+source .venv/bin/activate
 pip install -r requirements.txt || { echo "Failed to install requirements"; exit 1; }
 
 # Initialize a new git repository
