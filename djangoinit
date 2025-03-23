@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: djangoinit <project_name>"
+    exit 1
+fi
+
+PROJECT_NAME=$1
+REPO_URL="https://github.com/Soham7777777/DjangoInit.git"
+
+# Create a project directory
+mkdir "$PROJECT_NAME" || { echo "Failed to create directory"; exit 1; }
+cd "$PROJECT_NAME" || { echo "Failed to enter directory"; exit 1; }
+
+# Clone the repository
+git clone "$REPO_URL" . || { echo "Failed to clone repository"; exit 1; }
+
+# Remove the .git folder
+rm -rf .git
+
+# Initialize a new git repository
+git init
+git add -A
+git commit -a -m "Project Initialized."
+
+echo "Django project '$PROJECT_NAME' initialized successfully."
