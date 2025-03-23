@@ -6,7 +6,7 @@ if [ "$#" -ne 1 ]; then
 fi
 
 PROJECT_NAME=$1
-REPO_URL="https://github.com/Soham7777777/backend.git"
+REPO_URL="https://github.com/Soham7777777/FlaskInit.git"
 
 # Create a project directory
 mkdir "$PROJECT_NAME" || { echo "Failed to create directory"; exit 1; }
