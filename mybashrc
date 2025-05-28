@@ -119,9 +119,8 @@ fi
 # ====================================================================================================================================================================================
 # Custom section starts from below
 # ====================================================================================================================================================================================
-export PATH=$PATH:$HOME/bin/node-v20.14.0-linux-x64/bin # node and npm
 export PATH=$PATH:$HOME/bin/fzf/bin # fzf
-export PATH="$PATH:/opt/nvim-linux64/bin" # nvim
+export PATH="$PATH:/opt/nvim/bin" # nvim
 export PATH="$PATH:$HOME/bin/flutter/bin" # flutter
 export PATH="$PATH:/opt/gradle/gradle-8.10/bin"
 export ANDROID_HOME=$HOME/bin/Android/SDK/ # android
@@ -186,3 +185,12 @@ alias testdjangoproject='coverage erase; coverage run manage.py test -v 3; cover
 alias mypyreport='mypy --html-report mypy_report --config-file mypy.ini .'
 alias gitclean='git clean -fdX'
 alias generatekey="python3 -c 'import secrets; print(secrets.token_hex())'"
+alias playnvim='NVIM_APPNAME=nvim_playground nvim'
+
+# pnpm
+export PNPM_HOME="/home/soham/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
